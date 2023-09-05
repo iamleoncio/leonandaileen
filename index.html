@@ -1,125 +1,166 @@
-        // Countdown to October 7, 2023, 3:00 PM
-        const weddingDate = new Date('October 7, 2023 15:00:00').getTime();
-
-        const countdownElement = document.getElementById('countdown');
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const timeDifference = weddingDate - now;
-
-            if (timeDifference <= 0) {
-                countdownElement.textContent = 'The Big Day Has Arrived!';
-            } else {
-                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-                countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }
-        }
-
-        // Update the countdown every second
-        setInterval(updateCountdown, 1000);
-
-        // Initial update
-        updateCountdown();
-
-            // JavaScript to create the slideshow effect
-    // JavaScript to create the slideshow effect
-    const eventSlides = document.querySelectorAll('.event-slide');
-    let currentSlideIndex = 0;
-
-    function showSlide(slideIndex) {
-        eventSlides.forEach((slide, index) => {
-            if (index === slideIndex) {
-                slide.style.opacity = '1';
-            } else {
-                slide.style.opacity = '0';
-            }
-        });
-    }
-
-    function nextSlide() {
-        currentSlideIndex++;
-        if (currentSlideIndex >= eventSlides.length) {
-            currentSlideIndex = 0;
-        }
-        showSlide(currentSlideIndex);
-    }
-
-    // Start the slideshow
-    showSlide(currentSlideIndex);
-    setInterval(nextSlide, 5000); // Change slide every 5 seconds
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const navigationLinks = document.querySelectorAll(".nav-link");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        navigationLinks.forEach((link) => {
-            link.addEventListener("click", (event) => {
-                event.preventDefault();
-                const targetId = link.getAttribute("href").substring(1); // Remove the "#" symbol
-                const targetSection = document.getElementById(targetId);
+        
+    <title>Leon & Aileen's Wedding</title>
+    <!-- Include the Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-7Vz+Wsq2h4sd5ckFJWtm5uQ/xp1c4FpTzU5xJ3fmjr5S4y1PY5z3Bzabv3B6pUpbAXdJ7r5Qo4IN8w/Me4uoy4g==" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/d34fcef19b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap' rel='stylesheet' type='text/css'>
     
-                if (targetSection) {
-                    // Check if the target section is not the "splash" section
-                    if (!targetSection.classList.contains("splash")) {
-                        targetSection.scrollIntoView({
-                            behavior: "smooth",
-                        });
-                    }
-                }
-            });
-        });
-    });
-// Create an observer that will trigger when a section enters or exits the viewport
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        const targetId = entry.target.id;
-        const link = document.querySelector(`#navigation a[href="#${targetId}"]`);
-        const sectionHeaderElement = document.querySelector('#sectionHeader');
+    <!-- Place in your HTML file between the <head> tags -->
+</head>
+<body>
+    <div id="sectionHeader" class="section-header">Home</div>
 
-        if (entry.isIntersecting) {
-            link.classList.add('active');
+    <!-- Splash Page -->
+    <section class="splash" id ="splash">
+        <!-- Video Background -->
+        <div class="video-container">
+            <!-- Add the video source here -->
+            <video autoplay muted loop>
+                <!-- Replace 'bg.mp4' with the actual video file URL -->
+                <source src="img/bg-mobile.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <span>Home</span>
+        <!-- Lighter Overlay -->
+        <div class="overlay"></div>
 
-            // Get the header text of the current section
-            const sectionHeader = entry.target.querySelector('span'); // Assuming your section headers are in <h2> elements
-            const headerText = sectionHeader.textContent;
+        <!-- Content Overlay -->
+        <div class="content">
+            <h1 class="text-13x1 md:text-20x1 lg:text-13x1">Leon & Aileen</h1>
+            <!-- Add the date text below "Leon & Aileen" -->
+            <p class="date">October 7, 2023</p>
+            <p class="countdown" id="countdown"></p>
+            <div id="navigation">
+                <ul>
+                    <li><a href="#splash" data-title="Home"></a></li>
+                    <li><a href="#event" data-title="Event"></a></li>
+                    <li><a href="#rsvp" data-title="RSVP"></a></li>
+                </ul>
+            </div>
+        </div>          
+    </section>
 
-            // Update the #sectionHeader element with the header text
-            sectionHeaderElement.textContent = headerText;
+        <!-- Event Section -->
+<!-- Event Section -->
+<section id="event" class="h-screen relative overflow-hidden">
+    <!-- Church Event Slide -->
+    <div class="event-slide absolute top-0 left-0 w-full h-full bg-church-event bg-cover bg-center text-white text-center transition-opacity duration-500 opacity-100">
+        <div class="content-event h-full flex flex-col justify-center items-center">
+            <!-- Add custom slightly white overlay background and white border -->
+            <div class="content-box  p-4 rounded-lg custom-overlay-bg">
+                <span>Events</span>
+                <h2 class="text-4xl font-bold mb-4">Church</h2>
+                <p class="text-xl">Join us in celebrating our wedding at the church.</p>
+                <!-- Date, Time, and Address for Church Event -->
+                <div class="event-details text-white mt-4">
+                    <p>October 7, 2023</p>
+                    <p>2:30 PM - 5:00 PM</p>
+                    <p>St. Francis De Assissi</p>
+                    <p>Brgy. San Francisco Calihan Farconville Subd. San Pablo City, Laguna</p>
+                    <div class="tooltip-container">
+                        <i class="fa-solid fa-location-pin location animated-icon" id="icon"></i>
+                        <div class="tooltip" id="tooltip">
+                          <!-- Embedded map code goes here -->
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.323526380639!2d121.3262324757832!3d14.05806309012784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4349cd951f83%3A0xab59a9621a58878!2sSt.%20Francis%20of%20Assisi%20Parish!5e0!3m2!1sen!2sph!4v1693897554023!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                      </div>                      
+                </div>
+            </div>
+        </div>
+    </div>
 
-            // Position the #sectionHeader element to the left of the dotted navigation
-            const navigationPosition = link.getBoundingClientRect();
-            sectionHeaderElement.style.left = `${navigationPosition.left - sectionHeaderElement.offsetWidth - 10}px`; // Adjust the offset as needed
-            sectionHeaderElement.style.top = `${navigationPosition.top}px`; // Align with the dotted navigation vertically
-            sectionHeaderElement.style.opacity = 1; // Make it visible
-        } else {
-            link.classList.remove('active');
-        }
-    });
-}, {
-    threshold: 0.5, // Trigger when at least 50% of the section is in the viewport
-});
+    <!-- Reception Event Slide -->
+    <div class="event-slide absolute top-0 left-0 w-full h-full bg-reception-event bg-cover bg-center text-white text-center transition-opacity duration-500 opacity-0">
+        <div class="content-event h-full flex flex-col justify-center items-center">
+            <!-- Add custom slightly white overlay background and white border -->
+            <div class="content-box p-4 rounded-lg custom-overlay-bg">
+                <h2 class="text-4xl font-bold mb-4">Reception</h2>
+                <p class="text-xl">Join us for the reception following the ceremony.</p>
+                
+                <!-- Date, Time, and Address for Reception Event -->
+                <div class="event-details text-white mt-4">
+                    <p>October 7, 2023</p>
+                    <p>2:30 PM - 5:00 PM</p>
+                    <p>VB3 Event's Management Services</p>
+                    <p>Farmer's Village Brgy. San Lucas 1  San Pablo City, Laguna</p>
+                    <div class="tooltip-container">
+                        <i class="fa-solid fa-location-pin location animated-icon" id="icon"></i>
+                        <div class="tooltip" id="tooltip">
+                          <!-- Embedded map code goes here -->
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.8955179354334!2d121.32426477578345!3d14.08334458952985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd5d9a49705d71%3A0xd3e8c412a1a2f45b!2sVB3%20Events%20Management%20Services!5e0!3m2!1sen!2sph!4v1693897617020!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                      </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#splash" class="nav-link back-to-top">Back to Top</a>
+</section>
+<!-- RSVP Section with Video Background -->
+<section id="rsvp" class="h-screen relative overflow-hidden flex flex-col justify-center items-center">
 
-// Observe each section
-const sections = document.querySelectorAll('section');
-sections.forEach((section) => {
-    observer.observe(section);
-});
+    <!-- Video Background -->
+    <div class="rsvp-background absolute top-0 left-0 w-full h-full">
+        <video autoplay="" muted="" loop="" class="object-cover w-full h-full">
+            <source src="img/bg-rsvp2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+    </div>
+    <span>Attire and RSVP</span>
+    <!-- Content Overlay -->
+    <div class="content text-center">
+        <!-- Title and Description -->
+        <div class="rsvp-title text-white">
+            <h2 class="text-4xl font-bold mb-4">What to Wear</h2>
+            <p class="text-xl">Anything formal or semi-formal in shades of:</p>
+        </div>
+    
+        <!-- Color Boxes -->
+        <div class="color-boxes flex justify-between mt-4">
+            <div class="color-box bg-cool-grey">
+                <div class="color-name">Cool Grey</div>
+            </div>
+            <div class="color-box bg-pastel-grey">
+                <div class="color-name">Pastel Grey</div>
+            </div>
+            <div class="color-box bg-pale-grey">
+                <div class="color-name">Pale Grey</div>
+            </div>
+            <div class="color-box bg-warm-grey">
+                <div class="color-name">Warm Grey</div>
+            </div>
+        </div>
+        
+        <!-- Divider Line -->
+        <hr class="my-4 border-t border-white mb-4">
 
-// Additional code or functions you may have in your script.js file
-
-// ...
-const icon = document.getElementById('icon');
-const tooltip = document.getElementById('tooltip');
-
-icon.addEventListener('click', () => {
-  tooltip.style.display = 'block';
-});
-
-document.addEventListener('click', (event) => {
-  if (event.target !== icon) {
-    tooltip.style.display = 'none';
-  }
-});
+        <!-- RSVP Text -->
+        <div class="rsvp-text text-white">
+            <h2 class="text-4xl font-bold mb-2">RSVP</h2>
+            <p class="text-xl mb-4">Would you like to attend?</p>
+            <p class="text-xl">Please fill out the form below.</p>
+        </div>
+        
+        <!-- RSVP Button -->
+        <div class="mt-4 center-button">
+            <a href="https://forms.gle/vuAMtXsnPL8dwmwSA" class="btn-grad" target="_blank">I Am Attending</a>
+        </div>        
+    </div>
+    <a href="#splash" class="nav-link back-to-top">Back to Top</a>
+</section>
+    <script src="script.js"></script>
+</body>
+</html>

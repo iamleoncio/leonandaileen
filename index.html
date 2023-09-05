@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
         
     <title>Leon & Aileen's Wedding</title>
     <!-- Include the Tailwind CSS CDN -->
@@ -18,8 +19,10 @@
     <!-- Place in your HTML file between the <head> tags -->
 </head>
 <body>
+    <div id="sectionHeader" class="section-header">Home</div>
+
     <!-- Splash Page -->
-    <div class="splash" id ="splash">
+    <section class="splash" id ="splash">
         <!-- Video Background -->
         <div class="video-container">
             <!-- Add the video source here -->
@@ -29,7 +32,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-
+        <span>Home</span>
         <!-- Lighter Overlay -->
         <div class="overlay"></div>
 
@@ -39,17 +42,15 @@
             <!-- Add the date text below "Leon & Aileen" -->
             <p class="date">October 7, 2023</p>
             <p class="countdown" id="countdown"></p>
-            <!-- Add this HTML after your countdown element -->
-            <div id="event-navigation" class="navigation">
-                <a href="#event" class="nav-link">Event</a>
-                <div class="divider"></div>
-                <a href="#events" class="nav-link">Attire</a>
-                <div class="divider"></div>
-                <a href="#rsvp" class="nav-link">RSVP</a>
+            <div id="navigation">
+                <ul>
+                    <li><a href="#splash" data-title="Home"></a></li>
+                    <li><a href="#event" data-title="Event"></a></li>
+                    <li><a href="#rsvp" data-title="RSVP"></a></li>
+                </ul>
             </div>
-
         </div>          
-    </div>
+    </section>
 
         <!-- Event Section -->
 <!-- Event Section -->
@@ -59,6 +60,7 @@
         <div class="content-event h-full flex flex-col justify-center items-center">
             <!-- Add custom slightly white overlay background and white border -->
             <div class="content-box  p-4 rounded-lg custom-overlay-bg">
+                <span>Events</span>
                 <h2 class="text-4xl font-bold mb-4">Church</h2>
                 <p class="text-xl">Join us in celebrating our wedding at the church.</p>
                 <!-- Date, Time, and Address for Church Event -->
@@ -67,7 +69,13 @@
                     <p>2:30 PM - 5:00 PM</p>
                     <p>St. Francis De Assissi</p>
                     <p>Brgy. San Francisco Calihan Farconville Subd. San Pablo City, Laguna</p>
-                    <i class="fa-solid fa-location-pin location"></i>
+                    <div class="tooltip-container">
+                        <i class="fa-solid fa-location-pin location animated-icon" id="icon"></i>
+                        <div class="tooltip" id="tooltip">
+                          <!-- Embedded map code goes here -->
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.323526380639!2d121.3262324757832!3d14.05806309012784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4349cd951f83%3A0xab59a9621a58878!2sSt.%20Francis%20of%20Assisi%20Parish!5e0!3m2!1sen!2sph!4v1693897554023!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                      </div>                      
                 </div>
             </div>
         </div>
@@ -87,33 +95,39 @@
                     <p>2:30 PM - 5:00 PM</p>
                     <p>VB3 Event's Management Services</p>
                     <p>Farmer's Village Brgy. San Lucas 1  San Pablo City, Laguna</p>
-                    <i class="fa-solid fa-location-pin location"></i>
+                    <div class="tooltip-container">
+                        <i class="fa-solid fa-location-pin location animated-icon" id="icon"></i>
+                        <div class="tooltip" id="tooltip">
+                          <!-- Embedded map code goes here -->
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.8955179354334!2d121.32426477578345!3d14.08334458952985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd5d9a49705d71%3A0xd3e8c412a1a2f45b!2sVB3%20Events%20Management%20Services!5e0!3m2!1sen!2sph!4v1693897617020!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                      </div> 
                 </div>
             </div>
         </div>
     </div>
-    <a href="#splash" class="scroll-up">
-        <i class="fa-solid fa-chevron-up"></i>
-    </a>
+    <a href="#splash" class="nav-link back-to-top">Back to Top</a>
 </section>
 <!-- RSVP Section with Video Background -->
-<section id="rsvp" class="h-screen relative overflow-hidden">
+<section id="rsvp" class="h-screen relative overflow-hidden flex flex-col justify-center items-center">
+
     <!-- Video Background -->
     <div class="rsvp-background absolute top-0 left-0 w-full h-full">
-        <video autoplay muted loop class="object-cover w-full h-full">
-            <source src="img/bg-rsvp.mp4" type="video/mp4">
+        <video autoplay="" muted="" loop="" class="object-cover w-full h-full">
+            <source src="img/bg-rsvp2.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <div class="overlay"></div>
     </div>
-
+    <span>Attire and RSVP</span>
     <!-- Content Overlay -->
-    <div class="content-wide">
+    <div class="content text-center">
         <!-- Title and Description -->
         <div class="rsvp-title text-white">
             <h2 class="text-4xl font-bold mb-4">What to Wear</h2>
             <p class="text-xl">Anything formal or semi-formal in shades of:</p>
         </div>
-
+    
         <!-- Color Boxes -->
         <div class="color-boxes flex justify-between mt-4">
             <div class="color-box bg-cool-grey">
@@ -127,14 +141,25 @@
             </div>
             <div class="color-box bg-warm-grey">
                 <div class="color-name">Warm Grey</div>
-            </div>            
+            </div>
         </div>
-    </div>
+        
+        <!-- Divider Line -->
+        <hr class="my-4 border-t border-white mb-4">
 
-    <!-- Scroll Up Button -->
-    <a href="#splash" class="scroll-up text-white">
-        <i class="fa-solid fa-chevron-up"></i>
-    </a>
+        <!-- RSVP Text -->
+        <div class="rsvp-text text-white">
+            <h2 class="text-4xl font-bold mb-2">RSVP</h2>
+            <p class="text-xl mb-4">Would you like to attend?</p>
+            <p class="text-xl">Please fill out the form below.</p>
+        </div>
+        
+        <!-- RSVP Button -->
+        <div class="mt-4 center-button">
+            <a href="https://forms.gle/vuAMtXsnPL8dwmwSA" class="btn-grad" target="_blank">I Am Attending</a>
+        </div>        
+    </div>
+    <a href="#splash" class="nav-link back-to-top">Back to Top</a>
 </section>
     <script src="script.js"></script>
 </body>

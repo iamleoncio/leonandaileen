@@ -73,7 +73,6 @@
         });
     });
 // Create an observer that will trigger when a section enters or exits the viewport
-// Create an observer that will trigger when a section enters or exits the viewport
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         const targetId = entry.target.id;

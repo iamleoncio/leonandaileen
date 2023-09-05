@@ -2,6 +2,9 @@
 html {
     scroll-behavior: smooth;
 }
+span{
+    display: none;
+}
 
 .scroll-up {
     position: fixed;
@@ -54,7 +57,7 @@ video {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly lighter overlay */
+    background-color: rgba(0, 0, 0, 0.4); /* Slightly lighter overlay */
 }
 
 .content {
@@ -66,6 +69,7 @@ video {
     border-radius: 10px;
 }
 
+
 .content h1 {
     font-size: 10rem; /* Adjust font size for "Leon & Aileen" */
     font-weight: 300;
@@ -74,7 +78,7 @@ video {
     white-space: nowrap; /* Prevent line break for reveal effect */
     overflow: hidden; /* Hide overflow for reveal effect */
     position: relative;
-    animation: textRevealTop 2s ease-in-out 1s forwards; /* Text reveal animation from top */
+    animation: textRevealTop 1s ease-in-out 1s forwards; /* Text reveal animation from top */
 }
 
 /* Style the date text with a serif font and font size */
@@ -83,7 +87,7 @@ video {
     font-size: 1.5rem; /* Adjust font size for the date text */
     font-weight: 300;
     color: transparent; /* Make text transparent initially */
-    animation: zoomIn 2s ease-in-out 1s forwards; /* Zooming text reveal animation */
+    animation: zoomIn 1s ease-in-out 1s forwards; /* Zooming text reveal animation */
 }
 
 /* Style the countdown */
@@ -92,7 +96,7 @@ video {
     font-size: 2rem; /* Smaller font size for countdown */
     font-weight: 300;
     color: transparent; /* Make text transparent initially */
-    animation: textRevealBottom 2s ease-in-out 1s forwards; /* Text reveal animation from bottom */
+    animation: textRevealBottom 1s ease-in-out 1s forwards; /* Text reveal animation from bottom */
 }
 
 @keyframes textRevealTop {
@@ -127,42 +131,54 @@ video {
         color: #fff;
     }
 }
-
-/* Add this CSS after your existing styles */
-.navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10rem;
+#navigation {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
 }
 
-.nav-link {
-    font-family: 'Roboto Serif', serif;
-    font-size: 1.5rem;
-    font-weight: 100;
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1rem;
-    position: relative;
-    transition: all 0.3s ease;
+#navigation ul {
+    list-style: none;
+    padding: 0;
 }
 
-.divider {
-    height: 1.5rem;
-    width: 1px;
+#navigation ul li {
+    margin-bottom: 10px;
+}
+
+#navigation ul li a {
+    display: block;
+    width: 10px;
+    height: 10px;
     background-color: #fff;
-    margin: 0 1rem;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
 }
 
-/* Add hover animation to increase letter spacing and underline text */
-.nav-link:hover {
-    color: #fff; /* Change text color on hover */
-    letter-spacing: 2px; /* Increase letter spacing on hover */
-    transform: scale(1.1); /* Scale up the text on hover */
-    text-decoration: underline; /* Add underline on hover */
+#navigation ul li a.active {
+    background-color: #333; /* Change the color for the active section */
 }
 
-/* Style for the Church Event Background Image */
+.section-header {
+    position: fixed;
+    background-image: linear-gradient(to right, #283048 0%, #859398 51%, #283048 100%);
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 9999;
+    left: 0; /* Position it at the left edge */
+    top: 60%; /* Vertically center it */
+    transform: translateY(-50%); /* Correct vertical alignment */
+    white-space: nowrap; /* Prevent text from wrapping */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+
 /* Style for the Event Section */
 #event {
     position: relative;
@@ -206,13 +222,13 @@ h2 {
     font-family: 'Pinyon Script', cursive;
     font-size: 30px;
     padding: 5px;
-    animation: textRevealTop 2s ease-in-out 1s forwards; /* Text reveal animation from top */
+    animation: textRevealTop 1s ease-in-out 1s forwards; /* Text reveal animation from top */
 }
 
 .event-details {
     font-family: 'Roboto Serif', serif;
     letter-spacing: 5px;
-    animation: textRevealTop 2s ease-in-out 1s forwards; /* Text reveal animation from top */
+    animation: textRevealTop qs ease-in-out 1s forwards; /* Text reveal animation from top */
 }
 
 /* Style for the Church Event Background Image */
@@ -255,7 +271,7 @@ h2 {
     align-items: center;
     justify-content: center;
     border-radius: 20px; /* Add border radius */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add box shadow */
     margin: 0 10px; /* Add margin for spacing */
     text-align: center; /* Center text horizontally */
 }
@@ -317,6 +333,35 @@ h2 {
     }
 }
 
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .animated-icon {
+    animation: dance 1s infinite;
+    margin-top: 20px; /* Adjust the value to add the desired margin */
+    cursor: pointer;
+  }
+  
+  .tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .tooltip-container:hover .tooltip {
+    display: block;
+  }
+  
 /* Apply animations to specific boxes */
 .color-box:nth-child(1),
 .color-box:nth-child(2) {
@@ -330,77 +375,109 @@ h2 {
 
 /* Style for the wide content */
 .content-wide {
-    max-width: 100%; /* Make it as wide as the parent container allows */
+    max-width: 80%; /* Make it as wide as the parent container allows */
     padding: 1rem; /* Add some padding for spacing */
 }
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+.btn-grad {
+    background-image: linear-gradient(to right, #283048 0%, #859398  51%, #283048  100%);
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #333;
+    border-radius: 20px;
+    display: block;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+  }
 
-
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
 @media (max-width: 767px) {
-    /* Adjust the font size and spacing for smaller screens */
-    .video-container {
-        display: none; /* Hide the video container on smaller screens */
+
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        justify-content: flex-end;
+        flex-direction: row;
+        padding: 10px; /* Add padding for spacing */
     }
 
-   /*  .splash {
-       background-image: url('../img/bg-mobile.JPG');
+    .nav-link {
+        font-size: 1rem; /* Adjust font size for mobile */
+        margin: 0 0.5rem; /* Add horizontal margin for spacing */
+    }
+
+    .divider {
+        width: 1px;
+        height: 1.5rem;
+        margin: 0 0.5rem; /* Add horizontal margin for spacing */
+    }
+
+    /* Position the "Back to Top" link at the top */
+    .back-to-top {
+        position: static;
+        margin: 0 0.5rem; /* Add horizontal margin for spacing */
+    }
+    .splash h1{
+        font-size: 5rem;
+    }
+    .splash {
         background-size: cover;
         background-position: center;
         background-color: rgba(0, 0, 0, 0.4);
     }
-*/
-    .splash h1 {
-        font-size: 4rem;
-    }
-
-    .date {
-        font-size: 1rem;
-    }
-
     .countdown {
         font-size: 1rem;
     }
-
-    /* Adjust padding and margins for smaller screens */
-    .content {
-        padding: 0.5rem;
+    .date {
+        font-size: 1rem;
     }
-
-    /* Adjust the font size and padding for navigation links */
-    .nav-link {
+    .nav-link{
         font-size: 1rem;
     }
 
-    /* Hide the video on small screens to save space */
-    .video-container {
-        display: none;
+    .content-box{
+        width:140% !important;
     }
-
-    .text-xl {
-        font-size: 16px;
+    
+    h2{
+        font-size: 2rem;
     }
-
-    .event-details {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-    /* Style the mobile-specific scroll-up button */
-    .scroll-up {
-        display: block;
-        color: #fff;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
+    .text-xl{
         font-size: 20px;
-        bottom: 20px;
-        right: 20px;
-        z-index: 999;
+    }
+    .event-details{
+        font-size: 12px;
+    }
+    .color-boxes {
+        flex-direction: column; /* Stack the color boxes vertically on mobile */
+        margin-top: 1rem;
     }
 
-    /* Style the mobile-specific scroll-up button on hover */
-    .scroll-up:hover {
-        background-color: #000;
-        color: #fff;
+    .color-box {
+        width: 100%; /* Make each color box full width on mobile */
+        height: 80px; /* Adjust the height as needed */
+        margin: 0 0 1rem; /* Add spacing between color boxes */
+    }
+    
+    .color-name {
+        font-size: 16px; /* Adjust the font size for color names on mobile */
+    }
+    .section-header{
+        font-size: 12px;
     }
 }

@@ -346,7 +346,7 @@ h2 {
   
 
   .animated-icon {
-    animation: vibrating 0.1s infinite;
+    animation: vibrating 0.3s infinite;
     margin-top: 20px;
     cursor: pointer;
   }

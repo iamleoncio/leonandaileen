@@ -176,6 +176,12 @@ video {
     white-space: nowrap; /* Prevent text from wrapping */
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    opacity: 0; /* Start with zero opacity */
+    transition: top 0.3s ease, opacity 0.3s ease; /* Add a smooth transition for opacity */
+}
+.section-header.active {
+    opacity: 1;
+    top: 10px; /* Adjust the vertical position when active */
 }
 
 

@@ -52,38 +52,6 @@
     showSlide(currentSlideIndex);
     setInterval(nextSlide, 5000); // Change slide every 5 seconds
 
-
-    // JavaScript to control the scroll-up button visibility
-const scrollUpButton = document.querySelector('.scroll-up');
-const eventSection = document.getElementById('event');
-const splashSection = document.getElementById('splash');
-
-// Function to toggle the scroll-up button visibility
-function toggleScrollUpButtonVisibility() {
-    const scrollY = window.scrollY || window.pageYOffset;
-
-    // Check if the user has scrolled to the "event" section
-    if (scrollY >= eventSection.offsetTop) {
-        scrollUpButton.style.display = 'block'; // Show the button
-    } else {
-        scrollUpButton.style.display = 'none'; // Hide the button
-    }
-}
-
-// Listen for scroll events to toggle button visibility
-window.addEventListener('scroll', toggleScrollUpButtonVisibility);
-
-// Handle scroll-up button click event
-scrollUpButton.addEventListener('click', () => {
-    splashSection.scrollIntoView({
-        behavior: 'smooth',
-    });
-});
-
-// Initial check for scroll-up button visibility
-toggleScrollUpButtonVisibility();
-
-
     document.addEventListener("DOMContentLoaded", function () {
         const navigationLinks = document.querySelectorAll(".nav-link");
     
@@ -104,7 +72,55 @@ toggleScrollUpButtonVisibility();
             });
         });
     });
-    
-    
-    
-    
+// Create an observer that will trigger when a section enters or exits the viewport
+// Create an observer that will trigger when a section enters or exits the viewport
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        const targetId = entry.target.id;
+        const link = document.querySelector(`#navigation a[href="#${targetId}"]`);
+        const sectionHeaderElement = document.querySelector('#sectionHeader');
+
+        if (entry.isIntersecting) {
+            link.classList.add('active');
+
+            // Get the header text of the current section
+            const sectionHeader = entry.target.querySelector('span'); // Assuming your section headers are in <h2> elements
+            const headerText = sectionHeader.textContent;
+
+            // Update the #sectionHeader element with the header text
+            sectionHeaderElement.textContent = headerText;
+
+            // Position the #sectionHeader element to the left of the dotted navigation
+            const navigationPosition = link.getBoundingClientRect();
+            sectionHeaderElement.style.left = `${navigationPosition.left - sectionHeaderElement.offsetWidth - 10}px`; // Adjust the offset as needed
+            sectionHeaderElement.style.top = `${navigationPosition.top}px`; // Align with the dotted navigation vertically
+            sectionHeaderElement.style.opacity = 1; // Make it visible
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}, {
+    threshold: 0.5, // Trigger when at least 50% of the section is in the viewport
+});
+
+// Observe each section
+const sections = document.querySelectorAll('section');
+sections.forEach((section) => {
+    observer.observe(section);
+});
+
+// Additional code or functions you may have in your script.js file
+
+// ...
+const icon = document.getElementById('icon');
+const tooltip = document.getElementById('tooltip');
+
+icon.addEventListener('click', () => {
+  tooltip.style.display = 'block';
+});
+
+document.addEventListener('click', (event) => {
+  if (event.target !== icon) {
+    tooltip.style.display = 'none';
+  }
+});

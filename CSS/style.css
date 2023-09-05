@@ -342,7 +342,7 @@ h2 {
     }
 
     .splash {
-        background-image: url('../img/bg-mobile.JPG');
+       /* background-image: url('../img/bg-mobile.JPG');*/
         background-size: cover;
         background-position: center;
         background-color: rgba(0, 0, 0, 0.4);

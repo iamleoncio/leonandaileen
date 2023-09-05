@@ -341,13 +341,13 @@ h2 {
         display: none; /* Hide the video container on smaller screens */
     }
 
-    .splash {
-       /* background-image: url('../img/bg-mobile.JPG');*/
+   /*  .splash {
+       background-image: url('../img/bg-mobile.JPG');
         background-size: cover;
         background-position: center;
         background-color: rgba(0, 0, 0, 0.4);
     }
-
+*/
     .splash h1 {
         font-size: 4rem;
     }

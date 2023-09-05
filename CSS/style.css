@@ -1,0 +1,406 @@
+/* Additional CSS styles can be added here if needed */
+html {
+    scroll-behavior: smooth;
+}
+
+.scroll-up {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    padding: 10px;
+    z-index: 999;
+    text-decoration: none;
+    color: #fff;
+}
+
+.scroll-up i {
+    font-size: 30px;
+}
+
+.splash {
+    font-family: 'Great Vibes', cursive; /* Use the wedding-appropriate font */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style the video container */
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Style the video element */
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly lighter overlay */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: transparent; /* Make text transparent initially */
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.content h1 {
+    font-size: 10rem; /* Adjust font size for "Leon & Aileen" */
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    font-family: 'Great Vibes', cursive; /* Use the wedding-appropriate font for "Leon & Aileen" */
+    white-space: nowrap; /* Prevent line break for reveal effect */
+    overflow: hidden; /* Hide overflow for reveal effect */
+    position: relative;
+    animation: textRevealTop 2s ease-in-out 1s forwards; /* Text reveal animation from top */
+}
+
+/* Style the date text with a serif font and font size */
+.date {
+    font-family: 'Roboto Serif', serif; /* Use a serif font for the date text */
+    font-size: 1.5rem; /* Adjust font size for the date text */
+    font-weight: 300;
+    color: transparent; /* Make text transparent initially */
+    animation: zoomIn 2s ease-in-out 1s forwards; /* Zooming text reveal animation */
+}
+
+/* Style the countdown */
+.countdown {
+    font-family: 'Roboto Serif', serif;
+    font-size: 2rem; /* Smaller font size for countdown */
+    font-weight: 300;
+    color: transparent; /* Make text transparent initially */
+    animation: textRevealBottom 2s ease-in-out 1s forwards; /* Text reveal animation from bottom */
+}
+
+@keyframes textRevealTop {
+    from {
+        transform: translateY(-50%);
+        color: transparent;
+    }
+    to {
+        transform: translateY(0);
+        color: #fff;
+    }
+}
+
+@keyframes textRevealBottom {
+    from {
+        transform: translateY(50%);
+        color: transparent;
+    }
+    to {
+        transform: translateY(0);
+        color: #f0f0f0; /* Adjust text color for countdown */
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        color: transparent;
+    }
+    to {
+        transform: scale(1);
+        color: #fff;
+    }
+}
+
+/* Add this CSS after your existing styles */
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+}
+
+.nav-link {
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.divider {
+    height: 1.5rem;
+    width: 1px;
+    background-color: #fff;
+    margin: 0 1rem;
+}
+
+/* Add hover animation to increase letter spacing and underline text */
+.nav-link:hover {
+    color: #fff; /* Change text color on hover */
+    letter-spacing: 2px; /* Increase letter spacing on hover */
+    transform: scale(1.1); /* Scale up the text on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Style for the Church Event Background Image */
+/* Style for the Event Section */
+#event {
+    position: relative;
+    background-color: #000; /* Fallback background color */
+    overflow: hidden;
+}
+
+/* Style for the Event Slides */
+.event-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+
+    /* background-color: rgba(0, 0, 0, 0.1);*/
+}
+
+.content-event {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+h2 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 100 !important;
+    text-decoration: underline;
+    animation: textRevealTop 2s ease-in-out 1s forwards; /* Text reveal animation from top */
+}
+
+.text-xl {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 30px;
+    padding: 5px;
+    animation: textRevealTop 2s ease-in-out 1s forwards; /* Text reveal animation from top */
+}
+
+.event-details {
+    font-family: 'Roboto Serif', serif;
+    letter-spacing: 5px;
+    animation: textRevealTop 2s ease-in-out 1s forwards; /* Text reveal animation from top */
+}
+
+/* Style for the Church Event Background Image */
+.bg-church-event {
+    background-image: url('../img/img3.jpeg'); /* Replace with your image URL */
+}
+
+/* Style for the Reception Event Background Image */
+.bg-reception-event {
+    background-image: url('../img/img4.jpg'); /* Replace with your image URL */
+}
+.custom-overlay-bg {
+    background-color: rgba(0, 0, 0, 0.3); /* Slightly lighter overlay */
+}
+
+.location {
+    color: #fff;
+    font-size: 12px !important;
+    margin-top: 5px;
+}
+
+/* Style for the RSVP Section */
+#rsvp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Style for the color boxes */
+.color-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.color-box {
+    width: calc(25% - 20px); /* Adjust the width as needed and consider margin */
+    height: 120px; /* Adjust the height as needed */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px; /* Add border radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    margin: 0 10px; /* Add margin for spacing */
+    text-align: center; /* Center text horizontally */
+}
+.bg-cool-grey {
+    background-color: #8C92AC; /* Cool Grey */
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.bg-pastel-grey {
+    background-color: #CFCFC4; /* Pastel Grey */
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.bg-pale-grey {
+    background-color: #D3D3D3; /* Pale Grey */
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.bg-warm-grey {
+    background-color: #968C83; /* Warm Grey */
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Add this CSS for the color names */
+.color-box .color-name {
+    position: absolute;
+    top: 50%; /* Center text vertically */
+    left: 50%; /* Center text horizontally */
+    transform: translate(-50%, -50%); /* Center text both horizontally and vertically *//* Set text color to black for readability */
+    font-size: 16px; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-decoration: none; /* Remove text decoration */
+}
+
+/* Add animations for the boxes */
+@keyframes revealFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes revealFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply animations to specific boxes */
+.color-box:nth-child(1),
+.color-box:nth-child(2) {
+    animation: revealFromLeft 1s ease 0.5s forwards; /* Delay the animation for boxes 1 and 2 */
+}
+
+.color-box:nth-child(3),
+.color-box:nth-child(4) {
+    animation: revealFromRight 1s ease 0.5s forwards; /* Delay the animation for boxes 3 and 4 */
+}
+
+/* Style for the wide content */
+.content-wide {
+    max-width: 100%; /* Make it as wide as the parent container allows */
+    padding: 1rem; /* Add some padding for spacing */
+}
+
+
+@media (max-width: 767px) {
+    /* Adjust the font size and spacing for smaller screens */
+    .video-container {
+        display: none; /* Hide the video container on smaller screens */
+    }
+
+    .splash {
+        background-image: url('../img/bg-mobile.JPG');
+        background-size: cover;
+        background-position: center;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .splash h1 {
+        font-size: 4rem;
+    }
+
+    .date {
+        font-size: 1rem;
+    }
+
+    .countdown {
+        font-size: 1rem;
+    }
+
+    /* Adjust padding and margins for smaller screens */
+    .content {
+        padding: 0.5rem;
+    }
+
+    /* Adjust the font size and padding for navigation links */
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    /* Hide the video on small screens to save space */
+    .video-container {
+        display: none;
+    }
+
+    .text-xl {
+        font-size: 16px;
+    }
+
+    .event-details {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    /* Style the mobile-specific scroll-up button */
+    .scroll-up {
+        display: block;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+    }
+
+    /* Style the mobile-specific scroll-up button on hover */
+    .scroll-up:hover {
+        background-color: #000;
+        color: #fff;
+    }
+}
